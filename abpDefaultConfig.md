@@ -221,17 +221,17 @@
 
 ## TypeFinder
 
-类型查找器。
+类型查找器。默认情况下获取已加载到此应用程序域的执行上下文中的程序集中的类型。可以通过注入 IAssemblyFinder 自定义程序集加载逻辑。
 
 ## DefaultModuleFinder
 
-默认模块查找器。
+默认模块查找器。在 TypeFinder 提供的类中查找派生自 AbpModule 的具体类型（非抽象类）。
 
 ## AbpModuleManager
 
-ABP 模块管理器。
+ABP 模块管理器。对 DefaultModuleFinder 提供的类进行管理。
 
 ## LocalizationManager
 
-本地化管理器。
+本地化管理器。管理本地化资源，支持内存键值对资源（DictionaryBasedLocalizationSource）和资源文件资源（ResourceFileLocalizationSource）。
 
