@@ -34,9 +34,9 @@ AbpBootstrapper.Initialize();
 
 ## 解析和初始化 AbpStartupConfiguration
 
-解析了本地化配置、模块配置、导航配置、认证配置、设置配置、工作单元配置、事件总线配置、多租户配置、审计配置。
+解析了本地化配置、模块配置、导航配置、认证配置、设置配置、工作单元配置、事件总线配置、多租户配置、审计配置。AbpStartupConfiguration 类的实例引用了上述配置的属性，并公开了属性访问器。
 
-如果需要访问全局配置，可以在需要的类中注入 IAbpStartupConfiguration。
+这样，如果需要访问全局配置，可以在需要的类中注入 IAbpStartupConfiguration。
 
 ## 解析和初始化模块管理器
 
@@ -48,10 +48,17 @@ AbpBootstrapper.Initialize();
 
 * 从 IoC 容器解析所有模块，并为模块设置属性 IocManager 和 Configuration（ABP 启动配置） 的值。（这样所有模块能访问容器和配置）
 
-* 将 AbpKernelModule 移动到最前面。
+* 将 AbpKernelModule 移动到最前面。（首先初始化核心程序集）
 
-* 为所有模块设置依赖。（该模块所在程序集引用或的程序集的内的模块，使用 DependsOnAttribute 指定的模块）
+* 为所有模块设置依赖。（该模块所在程序集所引用或程序集内的模块，以及使用 DependsOnAttribute 指定的模块）
 
-* 根据依赖顺序初始化模块。依次调用模块的以下方法 PreInitialize()，Initialize()，PostInitialize()。所有模块的 PreInitialize() 方法执行完成后，执行 Initialize() 方法，最后是 PostInitialize() 方法。
+* 根据依赖顺序初始化模块。依次调用模块的以下方法 PreInitialize()，Initialize()，PostInitialize()。所有模块的 PreInitialize() 方法执行完成后，执行所有 Initialize() 方法，最后是所有 PostInitialize() 方法。
 
+# 回收
+
+程序在退出时，应该调用回收 ABP 框架。以便框架正确释放模块。
+
+```csharp
+AbpBootstrapper.Dispose();
+```
 
