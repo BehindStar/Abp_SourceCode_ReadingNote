@@ -18,7 +18,7 @@ var bootstrapper = new AbpBootstrapper();
 var bootstrapper = new AbpBootstrapper(aIocManager);
 ```
 
-:information_source:默认构造函数内部使用类 IocManager 的静态实例实例化类。
+:information_source: 默认构造函数内部使用类 IocManager 的静态实例实例化类。
 
 # 初始化
 
@@ -50,11 +50,7 @@ AbpBootstrapper.Initialize();
 
 * 将 AbpKernelModule 移动到最前面。
 
-* 为所有模块设置依赖
-
-** 该模块所在程序集引用或的程序集的内的模块
-
-** 使用 DependsOnAttribute 指定的模块
+* 为所有模块设置依赖。（该模块所在程序集引用或的程序集的内的模块，使用 DependsOnAttribute 指定的模块）
 
 * 根据依赖顺序初始化模块。依次调用模块的以下方法 PreInitialize()，Initialize()，PostInitialize()。所有模块的 PreInitialize() 方法执行完成后，执行 Initialize() 方法，最后是 PostInitialize() 方法。
 
