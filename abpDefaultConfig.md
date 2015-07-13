@@ -177,7 +177,7 @@
     <tr>
         <td>IsEnabled</td>
 		<td>bool</td>		
-		<td></td>
+		<td>false</td>
         <td></td>
     </tr>	
 </table>
