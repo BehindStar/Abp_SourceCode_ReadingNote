@@ -40,22 +40,22 @@ AbpBootstrapper.Initialize();
 
 ## 解析和初始化模块管理器
 
-1.获取当前应用程序域已加载的所有程序集中的所有派生自AbpModule的非抽象类型。
+* 获取当前应用程序域已加载的所有程序集中的所有派生自AbpModule的非抽象类型。
 
-1.查找上一步未加载的依赖模块（基于 DependsOnAttribute 属性指定的模块）。
+* 查找上一步未加载的依赖模块（基于 DependsOnAttribute 属性指定的模块）。
 
-1.将所有模块注册为自身的服务（单例）。
+* 将所有模块注册为自身的服务（单例）。
 
-1.从 IoC 容器解析所有模块，并为模块设置属性 IocManager 和 Configuration（ABP 启动配置） 的值。（这样所有模块能访问容器和配置）
+* 从 IoC 容器解析所有模块，并为模块设置属性 IocManager 和 Configuration（ABP 启动配置） 的值。（这样所有模块能访问容器和配置）
 
-1.将 AbpKernelModule 移动到最前面。
+* 将 AbpKernelModule 移动到最前面。
 
-1.为所有模块设置依赖
+* 为所有模块设置依赖
 
-2.该模块所在程序集引用或的程序集的内的模块
+** 该模块所在程序集引用或的程序集的内的模块
 
-2.使用DependsOn指定的模块
+** 使用 DependsOnAttribute 指定的模块
 
-1.根据依赖顺序初始化模块。依次调用模块的以下方法 PreInitialize()，Initialize()，PostInitialize()。所有模块的 PreInitialize() 方法执行完成后，执行 Initialize() 方法，最后是 PostInitialize() 方法。
+* 根据依赖顺序初始化模块。依次调用模块的以下方法 PreInitialize()，Initialize()，PostInitialize()。所有模块的 PreInitialize() 方法执行完成后，执行 Initialize() 方法，最后是 PostInitialize() 方法。
 
 
