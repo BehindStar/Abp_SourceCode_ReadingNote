@@ -33,7 +33,7 @@
         <td>Filters</td>
 		<td>IReadOnlyList&lt;DataFilterConfiguration&gt;</td>		
 		<td>空集</td>
-        <td>是否开启全局事务。</td>
+        <td></td>
     </tr>	
 </table>
 
@@ -52,7 +52,7 @@
         <td>Providers</td>
 		<td>ITypeList&lt;NavigationProvider&gt;</td>		
 		<td>空集</td>
-        <td>TypeList 类的集合。</td>
+        <td></td>
     </tr>	
 </table>
 
@@ -70,7 +70,7 @@
     <tr>
         <td>Languages</td>
 		<td>IList&lt;LanguageInfo&gt;</td>		
-		<td>空集</td>
+		<td></td>
         <td></td>
     </tr>
     <tr>
@@ -101,7 +101,7 @@
     <tr>
         <td>Providers</td>
 		<td>ITypeList&lt;AuthorizationProvider&gt;</td>		
-		<td>空集</td>
+		<td></td>
         <td></td>
     </tr>	
 </table>
@@ -120,7 +120,7 @@
     <tr>
         <td>Providers</td>
 		<td>ITypeList&lt;SettingProvider&gt;</td>		
-		<td>空集</td>
+		<td></td>
         <td></td>
     </tr>	
 </table>
