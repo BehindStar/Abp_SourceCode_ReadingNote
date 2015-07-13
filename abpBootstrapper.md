@@ -18,7 +18,7 @@ var bootstrapper = new AbpBootstrapper();
 var bootstrapper = new AbpBootstrapper(aIocManager);
 ```
 
-:information_source：默认构造函数内部使用类 IocManager 的静态实例实例化类。
+:information_source:默认构造函数内部使用类 IocManager 的静态实例实例化类。
 
 # 初始化
 
