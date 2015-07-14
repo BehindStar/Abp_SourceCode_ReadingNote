@@ -64,28 +64,92 @@
 
 ### 安装事件总线安装器
 
+根据事件总线配置，注册事件总线
 
+* 如果使用默认总线，那么使用工厂方法注册 EventBus.Default 为服务 IEventBus，生命期类型为单例。 EventBus.Default 是 EventBus 的一个静态实例。
+
+* 如果不使用默认总线，那么将 EventBus 注册为服务 IEventBus，生命期类型为单例。
+
+:information_source: 似乎并没有什么区别，唯一的区别是使用默认总线的话可以通过 EventBus.Default 访问到总线。 
+
+为所有派生自 IEventHandler 的服务添加自动注册到服务总线的功能。
+
+:information_source: 也就是说，只需要将事件处理器注册到容器，就能自动订阅事件。
 
 ### 按照约定注册组件
+
+按照约定注册组件。使用添加到 IIocManager 的约定注册器注册核心程序集的组件。
+
+:information_source: 这里除了上文提到的在核心程序集的基础约定注册器之外，还可能有其他注册器。因为其他模块的 PreInitialize() 方法可能添加注册器。
+
+此时不会安装 IoC 容器的安装器。
+
+:information_source: 这里指 IWinsdorContainer 的 IWinsdorInstaller。
 
 ## 初始化完成（PostInitialize）
 
 ### 注册缺失组件
 
+如果以下服务没有注册，那么将会注入默认组件。
+
+<table>
+    <tr>
+        <td>服务</td>
+		<td>默认组件</td>
+    </tr>
+    <tr>
+        <td>IUnitOfWork</td>
+		<td>NullUnitOfWork</td>
+    </tr>
+    <tr>
+        <td>IAuditInfoProvider</td>
+		<td>NullAuditInfoProvider</td>
+    </tr>
+    <tr>
+        <td>IAuditingStore</td>
+		<td>SimpleLogAuditingStore</td>
+    </tr>	
+</table>
 
 
 ### 解析本地化管理器并初始化
 
+初始化本地化管理器。
 
+:information_source: 如果在配置中关闭了本地化，那么不会进行初始化。
+
+* 从配置中读取资源列表。
+
+* 将资源添加到管理器。如果有重名的资源，将会抛出异常。
+
+* 初始化资源。[查看详细]()
+
+* 展开词典资源。[查看详细]()
 
 ### 解析导航管理器并初始化
 
+* 创建导航提供器上下文。[查看详细]()
 
+* 从配置中读取导航提供器类型列表。
+
+* 从 IoC 解析导航提供器。
+
+* 向导航提供器上下文设置提供器。[查看详细]()
 
 ### 解析权限管理器并初始化
 
+* 从配置中读取认证提供器列表。
 
+* 从 IoC中解析认证提供器并为权限管理器设置权限（如果未注册会自动注册）。[查看详细]()
+
+* 添加所有权限。[查看详细]()
 
 ### 解析设置定义管理器并初始化
 
+* 创建设置定义提供器上下文
 
+* 从配置中读取设置提供器类型列表
+
+* 从 IoC 中解析提供器。（如果未注册会自动注册）
+
+* 获取设置定义。[查看详细]()
