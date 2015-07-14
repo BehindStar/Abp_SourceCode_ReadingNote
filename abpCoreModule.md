@@ -6,13 +6,13 @@
 
 注册所有扩展了 ITransientDependency，ISingletonDependency，IInterceptor 的服务。
 
-扩展了 ITransientDependency，ISingletonDependency 的组件注册为自身（Foo 注册为 Foo）和与它名称匹配的接口（如 Foo 和 IFoo）。
+* 扩展了 ITransientDependency，ISingletonDependency 的组件注册为自身（Foo 注册为 Foo）和与它名称匹配的接口（如 Foo 和 IFoo）。
 
-扩展了 IInterceptor 的组件注册为自身，生命期类型为临时的。
+* 扩展了 IInterceptor 的组件注册为自身，生命期类型为临时的。
 
-IApplicationService，IPolicy，IRepository，IDomainService 等接口扩展了 ITransientDependency 接口。所以这些接口会被自动注册。
+* IApplicationService，IPolicy，IRepository，IDomainService 等接口扩展了 ITransientDependency 接口。所以这些接口会被自动注册。
 
-程序集中的非公共类型也会被注册。
+* 程序集中的非公共类型也会被注册。
 
 核心模块中有许多扩展了上述接口的类，所以它们都会被自动注册。
 
