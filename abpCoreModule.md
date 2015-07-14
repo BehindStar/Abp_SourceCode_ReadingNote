@@ -16,6 +16,8 @@ IApplicationService，IPolicy，IRepository，IDomainService 等接口扩展了 
 
 核心模块中有许多扩展了上述接口的类，所以它们都会被自动注册。
 
+:information_source: 注意，这里只是添加了约定，还没有开始注册。
+
 ### 初始化验证拦截器注册器  ValidationInterceptorRegistrar
 
 为扩展了 IApplicationService 的服务添加验证拦截器（ValidationInterceptor）。
