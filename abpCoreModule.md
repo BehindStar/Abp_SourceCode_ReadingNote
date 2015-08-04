@@ -4,7 +4,7 @@
 
 ### 添加基础约定注册器 BasicConventionalRegistrar
 
-注册所有扩展了 ITransientDependency，ISingletonDependency，IInterceptor 的服务。
+该注册器能够注册所有扩展了 ITransientDependency，ISingletonDependency，IInterceptor 的服务。
 
 * 扩展了 ITransientDependency，ISingletonDependency 的组件注册为自身（Foo 注册为 Foo）和与它名称匹配的接口（如 Foo 和 IFoo）。
 
@@ -22,15 +22,23 @@
 
 为扩展了 IApplicationService 的服务添加验证拦截器（ValidationInterceptor）。
 
+:information_source: 扩展了 IApplicationService 的服务在注册时会被添加一个[验证拦截器](abpValidationInterceptor.md)
+
 ### 初始化工作单元注册器 UnitOfWorkRegistrar
 
 为扩展了 IRepository 或 IApplicationService 的服务添加工作单元拦截器（UnitOfWorkInterceptor）。
 
+:information_source: 扩展了 IRepository 或 IApplicationService 的服务在注册时会被添加一个[工作单元拦截器](abpUnitOfWorkInterceptor.md)
+
 为方法或派生类的方法添加了 UnitOfWorkAttribute 标注的类添加工作单元拦截器（UnitOfWorkInterceptor）
+
+:information_source: 如果一个类的公共、非公共、实例方法或派生方法标注了 UnitOfWorkAttribute 特性，那么该类在注册时会被添加一个个[工作单元拦截器](abpUnitOfWorkInterceptor.md)
 
 ### 初始化认证拦截器注册器 AuthorizationInterceptorRegistrar
 
 为扩展了 IApplicationService 的服务添加认证拦截器（AuthorizationInterceptor）
+
+:information_source: 如果一个服务 扩展了 IApplicationService，那么该服务被注册时会被添加一个[认证拦截器](abpAuthorizationInterceptor.md)
 
 ### 初始化审计拦截器注册器 AuditingInterceptorRegistrar
 
