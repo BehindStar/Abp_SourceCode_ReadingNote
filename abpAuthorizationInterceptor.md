@@ -8,12 +8,12 @@
 
 * 解析 IAuthorizeAttributeHelper 服务进行验证。
 
-:information_source: 实现类为 AuthorizeAttributeHelper
+  :information_source: 实现类为 AuthorizeAttributeHelper
 
 * 验证是否登陆
 
 * 解析 IPermissionChecker 服务进行权限检查
 
-:information_source: 默认实现类为 NullPermissionChecker ，该实现总是返回 True
+  :information_source: 默认实现类为 NullPermissionChecker ，该实现总是返回 True
 
-:information_source: 需要自定义权限检查。（Model-Zero）好像已经实现了？
+  :information_source: 需要自定义权限检查。（Model-Zero）好像已经实现了？
